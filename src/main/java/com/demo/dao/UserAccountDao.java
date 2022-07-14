@@ -5,10 +5,7 @@ import java.util.List;
 import com.demo.model.UserAccount;
 import com.demo.util.RevanateUtil;
 import com.revanate.session.Session;
-import com.revature.dao.Transaction;
-import com.revature.models.Crime;
-import com.revature.models.SuperVillain;
-import com.revature.util.HibernateUtil;
+import com.revanate.transaction.Transaction;
 
 public class UserAccountDao {
 	
@@ -42,10 +39,6 @@ public class UserAccountDao {
 		return pk; // we return the generate Primary Key that DB provides for us
 	}
 	
-//	public void get(UserAccount userAccount) {
-//		
-//	}
-
 	public void delete(UserAccount userAccount) {
 		
 		Session ses = RevanateUtil.getSession();
@@ -81,12 +74,11 @@ public class UserAccountDao {
 	
 	public List<UserAccount> getAll() {
 		
-		// first thing is to caputer a session
+		// first thing is to capture a session
 		Session ses = RevanateUtil.getSession();
 		
-		List<UserAccount> userAccount = ses.createQuery("from user_account", UserAccount.class).list();
+		List<UserAccount> userAccount = (List<UserAccount>) ses.getAll(UserAccount.class).list();
 
-		return userAccount;		
-		
+		return userAccount;				
 	}
 }
