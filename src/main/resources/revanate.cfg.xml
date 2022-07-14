@@ -1,0 +1,9 @@
+<revanate-configuration>
+  <!-- These are JDBC Connection Credentials -->
+  <property name="revanate.connection.url">jdbc:postgresql://localhost:5432/postgres?currentSchema=hibernate</property>
+    <property name="revanate.connection.username">postgres</property>
+    <property name="revanate.connection.password">postgres</property>
+
+    <!-- List of mapping files -->
+	<mapping class="com.demo.model.UserAccount" />
+</revanate-configuration>
