@@ -6,4 +6,6 @@
 
     <!-- List of mapping files -->
 	<mapping class="com.demo.model.UserAccount" />
+	<mapping class="com.demo.model.Employee" />
+	<mapping class="com.demo.model.Department" />
 </revanate-configuration>
