@@ -78,7 +78,7 @@ public class UserAccountDao {
 		// first thing is to capture a session
 		Session ses = RevanateUtil.getSession();
 		
-		List<UserAccount> userAccount = (List<UserAccount>) ses.getAll(UserAccount.class).list();
+		List<UserAccount> userAccount = ses.getAll(UserAccount.class).list();
 
 		return userAccount;				
 	}
