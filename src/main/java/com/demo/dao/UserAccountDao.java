@@ -23,22 +23,22 @@ public class UserAccountDao {
 		tx.commit();
 	}
 	
-	public int get(UserAccount userAccount) {
+	public UserAccount getById(int userId) {
 
 		// capture a session
 		Session ses = RevanateUtil.getSession();
 
-		// start a transaction... Transaction is uniquely from Hibernate
+		// start a transaction...
 		Transaction tx = ses.beginTransaction();
 
-		// Make sure that you have java 8 set in your properties in Maven
-		int pk = (int) ses.save(userAccount); // the save() method returns the Primary Key
+		
+		UserAccount userAccount = (UserAccount) ses.get(UserAccount.class, userId); 
 
 		tx.commit();
 
-		return pk; // we return the generate Primary Key that DB provides for us
+		return userAccount; // returning UserAccount
 	}
-	
+
 	public void delete(UserAccount userAccount) {
 		
 		Session ses = RevanateUtil.getSession();
@@ -50,15 +50,16 @@ public class UserAccountDao {
 		tx.commit();
 	}
 	
-	public void save(UserAccount userAccount) {
+	public int save(UserAccount userAccount) {
 		
 		Session ses = RevanateUtil.getSession();
 		
 		Transaction tx = ses.beginTransaction();
 
-		ses.save(userAccount);
+		int id = (int) ses.save(userAccount);
 
 		tx.commit();		
+		return id;
 	}
 	
 	public void update(UserAccount userAccount) {
